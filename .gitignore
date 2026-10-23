@@ -1,0 +1,11 @@
+# Material-fonte bruto (não vai para o site; versões otimizadas ficam em assets/)
+Media/
+IDENTIDADE VISUAL/
+Logo/
+Zip/
+*.zip
+
+# Sistema
+Thumbs.db
+desktop.ini
+.DS_Store
