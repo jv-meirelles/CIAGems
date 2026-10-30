@@ -1,18 +1,23 @@
 /*
  * ============================================================
- *  CIA — CONFIGURAÇÃO DA LANDING PAGE
+ *  CASA C. — CONFIGURAÇÃO DO SITE PRINCIPAL
  * ============================================================
- *  Edite apenas este arquivo para trocar os links da página.
+ *  Edite este arquivo para trocar contatos e o portfólio.
+ *  (A landing da CIA tem a própria configuração em ciagems/js/config.js.)
  * ============================================================
  */
-window.CIA_CONFIG = {
-  // Link de pagamento (checkout Kirvano) usado em todos os botões "Comprar"
-  linkPagamento: "https://pay.kirvano.com/f1d02b69-e7e2-480e-be9c-6d76dfe5c490",
+window.CASAC_CONFIG = {
+  // WhatsApp com DDI + DDD, só números
+  whatsapp: "5561984210423",
 
-  // Comunidade no WhatsApp: único canal de dúvidas e contato com a equipe
-  linkComunidade: "https://chat.whatsapp.com/DmMdWaeo3gD4I7mkdmJ39l",
+  // Mensagem que já vem escrita ao abrir o WhatsApp
+  mensagem: "Olá! Vim pelo site da Casa C. e gostaria de conversar sobre um projeto de interiores.",
 
-  // Perfil do Instagram, sem @ (o link aparece no rodapé quando preenchido)
-  instagram: "cia.gems"
+  // Instagram, sem @
+  instagram: "casac.interiores",
 
+  // PORTFÓLIO — enquanto estiver vazio, a seção mostra um convite para o Instagram.
+  // Para adicionar um projeto: coloque a foto em img/portfolio/ e inclua uma linha, por exemplo:
+  // { foto: "img/portfolio/sala-jardins.jpg", titulo: "Sala de estar", local: "Brasília · DF", tipo: "Residencial" },
+  portfolio: []
 };

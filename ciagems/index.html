@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <!-- A página fica em uma subpasta (/ciagems/). Sem a barra final, os caminhos relativos
+       (css/, js/, assets/) apontariam para a raiz do domínio; então completamos a barra. -->
+  <script>
+    if (!/\/$|\.html?$/.test(location.pathname)) location.replace(location.pathname + "/" + location.search + location.hash);
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CIA · Agentes de IA para arquitetos</title>
+  <link rel="canonical" href="https://casacinteriores.com.br/ciagems/">
+  <meta name="description" content="Transforme seus projetos em imagens realistas em segundos, não em horas. A CIA reúne agentes de inteligência artificial dentro do Gemini, para arquitetos e designers de interiores.">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CIA · Agentes de IA para arquitetos">
+  <meta property="og:description" content="Agentes de IA no Google Gemini que transformam o print do seu projeto em imagem realista.">
+  <meta property="og:url" content="https://casacinteriores.com.br/ciagems/">
+  <meta property="og:image" content="https://casacinteriores.com.br/ciagems/assets/img/og-cover.jpg">
+  <link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jost:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap">
+  <link rel="preload" as="image" href="assets/img/hero-depois.jpg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Ícone oficial (colchetes + cubo) reutilizado na página -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="cia-icon" viewBox="0 0 100 100">
+      <path d="M18 36V18h18M64 18h18v18M82 64v18H64M36 82H18V64" fill="none" stroke="currentColor" stroke-width="4"/>
+      <path d="M50 37.5l14.5 7.3L50 52.2l-14.5-7.4z M34 48.6l14.2 7.4V71L34 62.8z M66 48.6L51.8 56V71L66 62.8z" fill="currentColor"/>
+    </symbol>
+    <symbol id="wa-icon" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.3-.4.3-.4.7-1.3a.5.5 0 000-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.8 11.9 11.9 0 004.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 001.8-1.3 2.3 2.3 0 00.2-1.3c-.1-.1-.3-.2-.5-.3z"/>
+    </symbol>
+  </svg>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="header" id="topo">
+    <div class="container header__inner">
+      <a href="#topo" class="header__brand" aria-label="CIA — início">
+        <span class="brand-mark"><svg aria-hidden="true"><use href="#cia-icon"/></svg></span>
+      </a>
+      <nav class="header__nav" aria-label="Principal">
+        <a href="#antes-depois">Antes e depois</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#agentes">Agentes</a>
+        <a href="#preco">Preço</a>
+        <a href="#faq">Dúvidas</a>
+      </nav>
+      <div class="header__ctas">
+        <a href="https://chat.whatsapp.com/DmMdWaeo3gD4I7mkdmJ39l" class="header__link js-community" target="_blank" rel="noopener">Comunidade no WhatsApp</a>
+        <a href="https://pay.kirvano.com/f1d02b69-e7e2-480e-be9c-6d76dfe5c490" class="btn btn--dark btn--sm js-buy" target="_blank" rel="noopener">Comprar agora</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== HERO ===================== -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero__copy reveal">
+          <p class="eyebrow"><span class="dot"></span> CIA</p>
+          <h1 class="display">Agentes de IA<br>para arquitetos</h1>
+          <p class="hero__sub">Transforme seus projetos em imagens realistas <em>em segundos, não em horas.</em></p>
+          <p class="lead">A CIA reúne agentes de inteligência artificial dentro do Gemini (por enquanto), para transformar seus projetos em imagens incríveis. E funciona com diferentes programas de modelagem 3D, não apenas SketchUp.</p>
+          <div class="hero__ctas">
+            <a href="#preco" class="btn btn--green">Comprar agora</a>
+            <a href="https://chat.whatsapp.com/DmMdWaeo3gD4I7mkdmJ39l" class="btn btn--ghost js-community" target="_blank" rel="noopener"><svg class="btn__icon" aria-hidden="true"><use href="#wa-icon"/></svg> Entrar na comunidade</a>
+          </div>
+        </div>
+
+        <!-- Palco central: vídeo do agente com as imagens de antes/depois por trás -->
+        <div class="stage" aria-label="Demonstração: do print à imagem realista">
+          <figure class="stage__card stage__card--before reveal">
+            <figcaption class="stage__label mono">Antes · Print</figcaption>
+            <img src="assets/img/hero-antes.jpg" alt="Print do SketchUp de um lavabo com forro de madeira e bancada preta" width="440" height="550">
+          </figure>
+
+          <span class="stage__arrow" aria-hidden="true">→</span>
+
+          <div class="device reveal">
+            <div class="device__bar">
+              <span class="device__logo"><svg aria-hidden="true"><use href="#cia-icon"/></svg></span>
+              <span class="device__title">CIA<small>Fotografia</small></span>
+            </div>
+            <div class="device__tabs mono" role="group" aria-label="Ir para a etapa do vídeo">
+              <button type="button" class="is-active" data-step="0">1 · Enviar</button>
+              <button type="button" data-step="1">2 · IA processa</button>
+              <button type="button" data-step="2">3 · Resultado</button>
+            </div>
+            <div class="device__screen">
+              <video class="js-loop" muted loop playsinline preload="none" aria-label="Vídeo do agente CIA Fotografia transformando um print em imagem realista">
+                <source data-src="assets/video/cia-fotografia-na-pratica.mov" type='video/mp4; codecs="hvc1"'>
+                <source data-src="assets/video/cia-fotografia-na-pratica-h264.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="player" aria-label="Controles do vídeo">
+              <button type="button" class="player__btn js-back" aria-label="Voltar 5 segundos">
+                <svg viewBox="0 0 24 24"><path d="M11 7L6 12l5 5M18 7l-5 5 5 5"/></svg>
+              </button>
+              <button type="button" class="player__btn player__btn--main js-toggle" aria-label="Pausar">
+                <svg class="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></svg>
+                <svg class="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg>
+              </button>
+              <button type="button" class="player__btn js-restart" aria-label="Voltar ao início">
+                <svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 108-8 8.5 8.5 0 00-6 2.5L4 8.5M4 4v4.5h4.5"/></svg>
+              </button>
+              <input type="range" class="player__bar js-seek" min="0" max="1000" value="0" step="1" aria-label="Posição do vídeo">
+              <span class="player__time mono js-time">0:00</span>
+            </div>
+          </div>
+
+          <span class="stage__arrow" aria-hidden="true">→</span>
+
+          <figure class="stage__card stage__card--after reveal">
+            <figcaption class="stage__label stage__label--green mono">Depois · CIA</figcaption>
+            <img src="assets/img/hero-depois.jpg" alt="Imagem fotorrealista do mesmo lavabo gerada pela CIA" width="410" height="512">
+          </figure>
+        </div>
+
+        <ul class="hero__proof">
+          <li>Agentes do Google Gemini</li>
+          <li>Sem prompts</li>
+          <li>Funciona com SketchUp e outros programas 3D</li>
+          <li>Roda no navegador, sem placa de vídeo</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== ANTES E DEPOIS ===================== -->
+    <section class="section" id="antes-depois">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow"><span class="dot"></span> Antes e depois</p>
+          <h2 class="display display--md">Do print <em>à imagem realista.</em></h2>
+          <p class="lead">Arraste a divisória de cada imagem para comparar. Projetos reais transformados pelos agentes CIA.</p>
+        </header>
+
+        <div class="compares" id="compares">
+          <!-- preenchido por js/main.js -->
+        </div>
+
+        <h3 class="gallery__title reveal">Mais resultados <span>· toque ou passe o mouse para ver o print original</span></h3>
+        <div class="gallery">
+          <!-- preenchido por js/main.js -->
+        </div>
+
+        <div class="center reveal">
+          <a href="#preco" class="btn btn--dark">QUERO ESSE RESULTADO NOS MEUS PROJETOS</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== DOR / PROPOSTA ===================== -->
+    <section class="section section--dark">
+      <div class="container split">
+        <div class="reveal">
+          <p class="eyebrow eyebrow--light">Por que a CIA</p>
+          <h2 class="display display--md"><span class="text-green">Você faz o projeto.</span><br><em>A CIA te ajuda com o resto.</em></h2>
+          <p class="lead lead--light">Terceirizar render custa caro e atrasa a apresentação. Aprender um software de render toma semanas. A CIA encurta esse caminho: do print à imagem que vende o projeto.</p>
+        </div>
+        <ul class="nolist reveal">
+          <li><em>Sem</em> configurar iluminação</li>
+          <li><em>Sem</em> configurar materiais</li>
+          <li><em>Sem</em> escrever prompts</li>
+          <li><em>Sem</em> perder horas com render</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== COMO FUNCIONA ===================== -->
+    <section class="section" id="como-funciona">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow"><span class="dot"></span> Como funciona</p>
+          <h2 class="display display--md">Três passos. <em>Nenhum prompt.</em></h2>
+        </header>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step__num mono">01</span>
+            <div class="step__icon"><svg viewBox="0 0 24 24"><path d="M4 16v3a1 1 0 001 1h14a1 1 0 001-1v-3M12 4v11M7.5 8.5L12 4l4.5 4.5"/></svg></div>
+            <h3>Exporte a imagem</h3>
+            <p>Exporte a vista do SketchUp (ou de outro programa 3D) e envie ao agente.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__num mono">02</span>
+            <div class="step__icon"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></svg></div>
+            <h3>O agente CIA processa</h3>
+            <p>O agente CIA já vem treinado: interpreta materiais, luz e composição e orienta o Gemini a gerar a cena sem que você precise descrever nada.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__num mono">03</span>
+            <div class="step__icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <h3>Receba a imagem realista</h3>
+            <p>Em segundos, uma nova imagem fotorrealista mantendo o layout do seu projeto, pronta para apresentar ao cliente ou publicar.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== AGENTES ===================== -->
+    <section class="section section--cream" id="agentes">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow"><span class="dot"></span> Os agentes</p>
+          <h2 class="display display--md">Um time de IA <em>para cada etapa da apresentação.</em></h2>
+          <p class="lead">Cada agente resolve uma etapa: do render fotorrealista ao moodboard, à luz e à humanização da cena.</p>
+        </header>
+
+        <div class="agents">
+          <article class="agent reveal"><span class="tag mono">Favorito</span><svg class="agent__icon"><use href="#cia-icon"/></svg><h3>CIA Fotografia</h3><p>Transforma um print do SketchUp em uma imagem fotorrealista, mantendo layout, proporções e materiais do projeto.</p></article>
+          <article class="agent reveal"><svg class="agent__icon"><use href="#cia-icon"/></svg><h3>CIA Novo Olhar</h3><p>Cria novos ângulos e perspectivas a partir de uma única imagem, gerando diferentes enquadramentos automaticamente.</p></article>
+          <article class="agent reveal"><svg class="agent__icon"><use href="#cia-icon"/></svg><h3>CIA Aprimorar</h3><p>Melhora automaticamente a qualidade dos seus renders, deixando as imagens mais nítidas e realistas.</p></article>
+          <article class="agent reveal"><svg class="agent__icon"><use href="#cia-icon"/></svg><h3>CIA Moodboard</h3><p>Gera um moodboard completo a partir de uma única imagem, facilitando a apresentação do conceito.</p></article>
+          <article class="agent reveal"><svg class="agent__icon"><use href="#cia-icon"/></svg><h3>CIA Mood Light</h3><p>Altera a iluminação e o clima da imagem, criando diferentes cenários e atmosferas.</p></article>
+          <article class="agent reveal"><svg class="agent__icon"><use href="#cia-icon"/></svg><h3>CIA Humanizar</h3><p>Adiciona pessoas e elementos de humanização, deixando as cenas mais naturais e atrativas.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== COMO COMPRAR ===================== -->
+    <section class="section section--dark" id="comprar">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow eyebrow--light"><span class="dot"></span> Como comprar</p>
+          <h2 class="display display--md">Acesso aos agentes <em>em três passos.</em></h2>
+        </header>
+        <ol class="buy-steps">
+          <li class="reveal"><p>Clique em <strong>Comprar agora</strong> e escolha os agentes de IA que deseja adquirir.</p></li>
+          <li class="reveal"><p>Siga as instruções do checkout seguro para <strong>finalizar o pagamento</strong>.</p></li>
+          <li class="reveal"><p>Após a confirmação, você recebe <strong>acesso à plataforma</strong> com aulas, tutoriais e os links dos seus agentes.</p></li>
+        </ol>
+        <div class="center reveal">
+          <a href="#preco" class="btn btn--green">Comprar agora</a>
+          <p class="buy-note">Pagamento processado pela Kirvano. Ficou com dúvida? <a href="https://chat.whatsapp.com/DmMdWaeo3gD4I7mkdmJ39l" class="js-community" target="_blank" rel="noopener">Pergunte na nossa comunidade do WhatsApp</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== DIFERENCIAL ===================== -->
+    <section class="section" id="diferencial">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow"><span class="dot"></span> Diferencial</p>
+          <h2 class="display display--md">Por que o Pack CIA <em>é diferente?</em></h2>
+          <p class="lead">Agentes de inteligência artificial desenvolvidos para a rotina de arquitetos e designers de interiores, que transformam seus prints de modelagem em imagens incríveis, sem complicação e sem precisar dominar prompts.</p>
+          <p class="diff__motto">Criado por quem entende de projetos, para quem vive de projetar.</p>
+        </header>
+
+        <div class="diff">
+          <div class="diff__box diff__box--others reveal">
+            <h3 class="mono">Com outras ferramentas de IA</h3>
+            <ul>
+              <li>Você precisa escrever <strong>prompts complexos</strong> para conseguir o resultado desejado.</li>
+              <li>Cada ferramenta exige <strong>um processo diferente</strong> e pode consumir seu tempo.</li>
+              <li>Você pode gastar <strong>horas ajustando comandos</strong> até chegar ao resultado ideal.</li>
+              <li>Nem sempre o resultado <strong>respeita as características</strong> do seu projeto original.</li>
+            </ul>
+          </div>
+          <div class="diff__box diff__box--cia reveal">
+            <h3 class="mono">Com o Pack CIA</h3>
+            <ul>
+              <li><strong>Sem precisar escrever prompts:</strong> envie seu print e deixe o agente orientar o processo.</li>
+              <li><strong>Compatível com diferentes programas de modelagem:</strong> use seus prints, não importa qual software você utiliza.</li>
+              <li><strong>Diversas possibilidades em um só pack:</strong> transforme imagens em fotografias realistas, humanize cenas, explore novos ângulos, crie moodboards e muito mais.</li>
+              <li><strong>Mais agilidade para apresentar seus projetos:</strong> otimize seu fluxo de trabalho e dedique mais tempo à criação.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FEEDBACK (prints da comunidade) ===================== -->
+    <section class="section section--dark feedback" id="feedback">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow eyebrow--light"><span class="dot"></span> Feedback</p>
+          <h2 class="display display--md">Resultado <em>dos alunos.</em></h2>
+          <p class="lead lead--light">Prints enviados na comunidade por quem já usa os agentes CIA.</p>
+        </header>
+      </div>
+      <div class="marquee" id="feedbackMarquee" aria-label="Prints de clientes no WhatsApp. Arraste para o lado para ver mais.">
+        <div class="marquee__track" id="feedbackTrack">
+          <!-- preenchido por js/main.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PREÇO ===================== -->
+    <section class="section section--cream" id="preco">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow"><span class="dot"></span> Investimento</p>
+          <h2 class="display display--md">Todos os agentes <em>em um só pack.</em></h2>
+        </header>
+
+        <article class="plan reveal">
+          <div class="plan__media" id="planCompare">
+            <!-- comparador preenchido por js/main.js -->
+          </div>
+
+          <div class="plan__body">
+            <p class="plan__tag mono">Pack completo</p>
+            <h3 class="plan__title">CIA · IA para arquitetos</h3>
+            <p class="plan__desc">Agentes de inteligência artificial dentro do Gemini que transformam os prints do seu projeto em imagens realistas, sem escrever prompts.</p>
+
+            <ul class="plan__list">
+              <li>6 agentes: Fotografia, Novo Olhar, Aprimorar, Moodboard, Mood Light e Humanizar</li>
+              <li>Acesso à plataforma com aulas completas e tutoriais</li>
+              <li><span>Links para usar seus agentes direto no Gemini<sup>**</sup></span></li>
+              <li>Funciona com SketchUp e outros programas de modelagem 3D</li>
+              <li>Comunidade no WhatsApp com a equipe CIA</li>
+              <li><strong>Garantia de 7 dias</strong></li>
+            </ul>
+
+            <div class="plan__price">
+              <div>
+                <p class="plan__installments"><span class="plan__times">12x de</span> <strong>R$ 15,14<sup>*</sup></strong></p>
+                <p class="plan__cash">ou <strong>R$ 147,00</strong> à vista</p>
+              </div>
+              <div class="buy-row">
+                <a href="https://pay.kirvano.com/f1d02b69-e7e2-480e-be9c-6d76dfe5c490" class="btn btn--green js-buy" target="_blank" rel="noopener">Quero a CIA</a>
+                <span class="gmail-hint"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 22a10 10 0 100-20 10 10 0 000 20zM12 16v-4M12 8h.01"/></svg><span>No checkout, use um e-mail <strong>@gmail</strong></span></span>
+              </div>
+            </div>
+            <p class="plan__note">*Parcelado no cartão de crédito, com juros do parcelamento. Pagamento seguro pela Kirvano e acesso liberado após a confirmação.</p>
+            <p class="plan__note plan__note--tight">**Acesse os agentes pelo Gemini, conforme as condições do produto adquirido. A utilização está sujeita aos limites e à disponibilidade da plataforma.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="section" id="faq">
+      <div class="container faq">
+        <header class="section__head section__head--left reveal">
+          <p class="eyebrow"><span class="dot"></span> Dúvidas frequentes</p>
+          <h2 class="display display--md">Antes de <em>começar.</em></h2>
+          <a href="https://chat.whatsapp.com/DmMdWaeo3gD4I7mkdmJ39l" class="btn btn--ghost js-community" target="_blank" rel="noopener"><svg class="btn__icon" aria-hidden="true"><use href="#wa-icon"/></svg> Tirar dúvidas na comunidade</a>
+        </header>
+        <div class="faq__list reveal">
+          <details open><summary>Preciso saber usar IA ou escrever prompt?</summary><p>Não. Os agentes são <strong>Gems do Gemini</strong> já configurados: você abre no navegador, envia a imagem exportada do seu 3D e recebe o resultado. <strong>Nenhum prompt, nenhum programa novo</strong>, nenhuma configuração.</p></details>
+          <details><summary>Funciona com qual programa de 3D?</summary><p>Com qualquer um: SketchUp, Revit, 3ds Max, Blender, Enscape, Lumion… O agente trabalha em cima da <strong>imagem exportada</strong>, então basta o seu 3D exportar uma imagem em boa resolução.</p></details>
+          <details><summary>Quando recebo meu acesso depois da compra?</summary><p>O acesso chega no seu e-mail, enviado em nome da <strong>Kirvano</strong> (a plataforma de pagamento), com o passo a passo de como entrar. Digite o e-mail certinho no checkout e use um <strong>@gmail</strong>. Se a mensagem não aparecer, procure na caixa de <strong>spam</strong> ou na <strong>lixeira</strong>.</p></details>
+          <details><summary>Posso comprar com qualquer e-mail?</summary><p><strong>Use um @gmail</strong>: os agentes são Gems do Gemini e a liberação vai direto para a conta Google desse e-mail. Se você já comprou com outro e-mail, avise na nossa <a href="https://chat.whatsapp.com/DmMdWaeo3gD4I7mkdmJ39l" class="js-community" target="_blank" rel="noopener">comunidade do WhatsApp</a> que a equipe ajuda.</p></details>
+          <details><summary>Como aprendo a usar os agentes?</summary><p>Dentro da plataforma: <strong>assista às aulas e aos tutoriais</strong>. Lá está explicado, passo a passo, como usar cada um dos 6 agentes e como exportar a imagem do seu 3D do jeito certo.</p></details>
+          <details><summary>Preciso de um computador potente?</summary><p>Não. O processamento acontece no Google Gemini, na nuvem. Você usa pelo <strong>navegador ou pelo celular</strong>.</p></details>
+          <details><summary>Tem garantia?</summary><p>Sim. Você tem <strong>7 dias de garantia</strong> a partir da compra.</p></details>
+          <details><summary>Como falo com a equipe?</summary><p>Todo o contato com a equipe CIA é feito pela nossa <strong>comunidade no WhatsApp</strong>. Lá você tira todas as suas dúvidas, antes e depois da compra.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CTA FINAL / COMUNIDADE ===================== -->
+    <section class="section section--dark cta" id="comunidade">
+      <div class="container cta__grid">
+        <div class="reveal">
+          <svg class="cta__icon"><use href="#cia-icon"/></svg>
+          <h2 class="display display--md">Entre para a nossa <em>comunidade no WhatsApp.</em></h2>
+          <p class="lead lead--light">Todas as dúvidas são tiradas lá, e todo o contato com a equipe CIA acontece por lá.</p>
+          <ul class="cta__list">
+            <li>Tire suas dúvidas sobre os agentes</li>
+            <li>Fale direto com a equipe CIA</li>
+            <li>Suporte antes e depois da compra</li>
+          </ul>
+        </div>
+
+        <div class="community reveal">
+          <span class="community__icon"><svg aria-hidden="true"><use href="#wa-icon"/></svg></span>
+          <h3>Comunidade CIA</h3>
+          <p>Grupo oficial no WhatsApp para arquitetos e designers de interiores.</p>
+          <a href="https://chat.whatsapp.com/DmMdWaeo3gD4I7mkdmJ39l" class="btn btn--green btn--block js-community" target="_blank" rel="noopener">Entrar na comunidade</a>
+          <p class="community__buy">Já decidiu? <a href="#preco">Comprar agora</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== AVISO IMPORTANTE ===================== -->
+    <section class="notice" aria-labelledby="noticeTitle">
+      <div class="container">
+        <div class="notice__box">
+          <p class="notice__title mono" id="noticeTitle"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0zM12 9v4M12 17h.01"/></svg> Aviso importante</p>
+          <p><strong>A IA muda o tempo todo.</strong> A CIA funciona com a inteligência artificial do Google Gemini, uma ferramenta de terceiros integrada ao seu funcionamento. Por isso, os recursos, os limites e a disponibilidade da plataforma <strong>podem sofrer alterações</strong> de acordo com a evolução desses serviços externos ao longo do tempo.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__brand" role="img" aria-label="CIA"><span class="brand-mark"><svg aria-hidden="true"><use href="#cia-icon"/></svg></span></span>
+      <p>CIA · agentes de inteligência artificial para arquitetos e designers de interiores.</p>
+      <nav class="footer__links">
+        <a href="#antes-depois">Resultados</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="https://chat.whatsapp.com/DmMdWaeo3gD4I7mkdmJ39l" class="js-community" target="_blank" rel="noopener">Comunidade</a>
+        <a href="#" id="instaLink" target="_blank" rel="noopener" hidden>Instagram</a>
+      </nav>
+      <small>© <span id="year"></span> CIA. Google Gemini é marca registrada da Google LLC; a CIA não é afiliada ao Google.</small>
+      <p class="footer__credit">Desenvolvido por <strong>João Vitor Meirelles</strong></p>
+    </div>
+  </footer>
+
+  <a href="#preco" class="sticky-cta">Comprar agora</a>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

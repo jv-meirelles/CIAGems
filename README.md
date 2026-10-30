@@ -1,12 +1,29 @@
-# Landing page CIA
+# casacinteriores.com.br
 
-Página estática (HTML/CSS/JS puro, sem build). Para publicar, envie apenas:
+Site estático (HTML/CSS/JS puro, sem build).
+
+| Endereço | Pasta | O que é |
+|---|---|---|
+| `casacinteriores.com.br/` | raiz (`index.html`, `css/`, `js/`, `img/`) | Site principal da Casa C.: sobre, serviços, portfólio, produtos e contato. |
+| `casacinteriores.com.br/ciagems/` | `ciagems/` | Landing page da CIA (agentes de IA para arquitetos). |
+
+## Publicar
+
+Envie para a raiz do domínio (`public_html`, `www` ou equivalente da hospedagem):
 
 ```
-index.html  css/  js/  assets/
+index.html   css/   js/   img/   ciagems/
 ```
 
-As pastas `IDENTIDADE VISUAL`, `Logo`, `Media` e `Zip` são material-fonte e **não** precisam ir para o servidor.
+Não precisam ir para o servidor: `Media/`, `IDENTIDADE VISUAL/`, `Logo/`, `Logomarca CASA C/` (material-fonte), `serve.ps1`, `README.md` e `.claude/`.
+
+O site principal e a landing são independentes: cada um tem os próprios `css/`, `js/` e imagens.
+
+## Site principal (raiz)
+
+- **Contatos e portfólio** em `js/config.js` (WhatsApp, mensagem, Instagram e a lista de projetos).
+- **Portfólio**: enquanto a lista estiver vazia, a seção mostra um convite para o Instagram. Coloque as fotos em `img/portfolio/` e adicione uma linha por projeto em `portfolio`.
+- **Textos** de Sobre e Serviços estão direto no `index.html`, marcados com comentário para revisão.
 
 ## Ver localmente
 
@@ -14,19 +31,12 @@ As pastas `IDENTIDADE VISUAL`, `Logo`, `Media` e `Zip` são material-fonte e **n
 powershell -ExecutionPolicy Bypass -File serve.ps1
 ```
 
-Abra http://localhost:8080 (abrir o `index.html` direto pelo arquivo não carrega o vídeo corretamente em todos os navegadores).
+Abra http://localhost:8080 (site principal) ou http://localhost:8080/ciagems/ (landing).
 
-## Configuração — `js/config.js`
+## Landing CIA (`ciagems/`)
 
-| Campo | Status |
-|---|---|
-| `linkPagamento` | ✅ Kirvano configurado (todos os botões "Comprar agora") |
-| `linkComunidade` | ✅ Comunidade no WhatsApp (único canal de dúvidas e contato com a equipe) |
-| `instagram` | ✅ @cia.gems (link no rodapé) |
-
-## Mídia
-
-- **Vídeo**: `assets/video/cia-fotografia-na-pratica.mov` é o vídeo da pasta `Media` (codec HEVC). Navegadores sem suporte a HEVC (Chrome/Firefox em boa parte do Windows e Android) usam automaticamente `cia-fotografia-na-pratica-h264.mp4` (TAKE 2 da mesma gravação, em H.264). Para usar um único arquivo universal, exporte o vídeo final em **MP4 H.264** e substitua os dois arquivos.
-- **Imagens**: versões otimizadas (máx. 1280 px, JPEG) em `assets/img/`, geradas a partir de `Media/`.
-- **Feedback**: prints de `Media/FEEDBACK` com os telefones censurados, em `assets/img/feedback/feedback-01.jpg` … `feedback-13.jpg`. Para adicionar mais, salve o print censurado com o próximo número e atualize `FEEDBACK_TOTAL` em `js/main.js`.
-- **Comparadores**: um por agente (Fotografia, Novo Olhar, Aprimorar, Moodboard, Mood Light, Humanizar). As imagens vêm das pastas de cada agente em `Media/`; para trocar, basta substituir os arquivos com o mesmo nome em `assets/img/`. Os demais pares de Fotografia ficam na galeria ("Mais resultados").
+- **Links** em `ciagems/js/config.js`: checkout Kirvano, comunidade no WhatsApp e Instagram.
+- **Imagens** otimizadas em `ciagems/assets/img/`, geradas a partir de `Media/`.
+- **Feedback**: prints censurados em `ciagems/assets/img/feedback/feedback-01.jpg` … `feedback-31.jpg`. Para adicionar, salve o próximo número e atualize `FEEDBACK_TOTAL` em `ciagems/js/main.js`.
+- **Vídeo**: `cia-fotografia-na-pratica.mov` (HEVC) com reserva `cia-fotografia-na-pratica-h264.mp4` para navegadores sem suporte a HEVC.
+- Os caminhos são relativos; se alguém abrir `/ciagems` sem a barra final, a página completa a barra sozinha.

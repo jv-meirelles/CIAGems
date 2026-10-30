@@ -1,0 +1,23 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-30T22:00:03.224Z",
+        "reason": "assistant triage: sections get padding/gutters from css/site.css (.section, .container) which the static scan does not apply; .about__values li has 18px inset next to its divider"
+      },
+      {
+        "rule": "overused-font",
+        "value": "instrument serif",
+        "createdAt": "2026-10-30T22:00:03.424Z",
+        "reason": "assistant triage: deliberate match with the CIA landing typography (ciagems/) that the user reviewed and approved across many iterations"
+      }
+    ]
+  }
+}

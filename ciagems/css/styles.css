@@ -243,7 +243,7 @@ p { margin: 0; }
 .cmp__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
 .cmp__before { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
 .cmp__handle { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; background: var(--white); transform: translateX(-1px); pointer-events: none; }
-.cmp__handle span { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 40px; height: 40px; border-radius: 50%; background: var(--green); color: var(--black); display: grid; place-items: center; font: 600 15px/1 var(--sans); letter-spacing: 1px; box-shadow: 0 6px 18px rgba(0,0,0,.3); transition: transform .2s; }
+.cmp__handle span { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 40px; height: 40px; border-radius: 50%; background: var(--white); color: var(--black); display: grid; place-items: center; font: 600 15px/1 var(--sans); letter-spacing: 1px; box-shadow: 0 6px 18px rgba(0,0,0,.3); transition: transform .2s; }
 .cmp__frame.is-dragging .cmp__handle span { transform: translate(-50%, -50%) scale(1.1); }
 .cmp__range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; pointer-events: none; }
 .cmp__frame:focus-within .cmp__handle span { outline: 3px solid var(--white); outline-offset: 2px; }
@@ -445,4 +445,14 @@ section[id] { scroll-margin-top: 64px; }
   .fb-card { width: 210px; border-radius: 22px; }
   .fb-card img { border-radius: 16px; }
   .marquee__track { gap: 14px; }
+}
+
+/* ---------- Fotos do topo: zoom sobre o vídeo (só em telas com mouse) ---------- */
+@media (hover: hover) and (min-width: 1081px) {
+  .stage__card { position: relative; cursor: zoom-in; outline: none; }
+  .stage__card img { position: relative; transform-origin: center; transition: transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .45s, border-radius .45s; }
+  .stage__card.is-zoom { z-index: 20; }
+  .stage__card.is-zoom img { z-index: 20; transform: translate(var(--dx), var(--dy)) scale(var(--s)); box-shadow: 0 40px 90px -20px rgba(0,0,0,.5); border-radius: 8px; }
+  .stage__card .stage__label { transition: opacity .25s; }
+  .stage__card.is-zoom .stage__label { opacity: 0; }
 }

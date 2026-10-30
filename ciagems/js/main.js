@@ -23,9 +23,9 @@
   /* ---------------- Antes e depois: um comparador por agente ---------------- */
   var PAIRS = [
     { id: "cozinha", agent: "CIA Fotografia", label: "Print do SketchUp → foto realista" },
-    { id: "novoolhar", agent: "CIA Novo Olhar", label: "Uma imagem → novos ângulos", before: "Imagem base" },
+    { id: "novoolhar", agent: "CIA Novo Olhar", label: "Uma imagem → novos ângulos", before: "Antes" },
     { id: "aprimorar", agent: "CIA Aprimorar", label: "Render comum → render aprimorado", before: "Antes" },
-    { id: "moodboard", agent: "CIA Moodboard", label: "Uma imagem → moodboard completo", before: "Imagem base" },
+    { id: "moodboard", agent: "CIA Moodboard", label: "Uma imagem → moodboard completo", before: "Antes" },
     { id: "moodlight", agent: "CIA Mood Light", label: "Luz natural → clima aconchegante", before: "Antes" },
     { id: "humanizar", agent: "CIA Humanizar", label: "Ambiente vazio → cena com pessoas", before: "Antes" }
   ];
@@ -123,8 +123,10 @@
   });
 
   /* ---------------- Feedback: prints em roleta contínua, arrastável ---------------- */
-  var FEEDBACK_TOTAL = 13; // assets/img/feedback/feedback-01.jpg … feedback-13.jpg
-  var FEEDBACK_HEIGHTS = { 1: 620, 4: 840 }; // altura (em 540 px de largura); as demais têm 1174
+  var FEEDBACK_TOTAL = 31; // assets/img/feedback/feedback-01.jpg … feedback-31.jpg
+  // altura de cada print em 540 px de largura; os que não estão aqui têm 1174
+  var FEEDBACK_HEIGHTS = { 1: 620, 4: 840, 22: 518, 23: 648, 31: 1173 };
+  for (var h = 14; h <= 30; h++) if (!FEEDBACK_HEIGHTS[h]) FEEDBACK_HEIGHTS[h] = 894;
   var marquee = document.getElementById("feedbackMarquee");
   var track = document.getElementById("feedbackTrack");
 
@@ -191,6 +193,34 @@
   marquee.addEventListener("pointerup", stopDrag);
   marquee.addEventListener("pointercancel", stopDrag);
   marquee.addEventListener("click", function (e) { if (moved) e.preventDefault(); }, true);
+
+  /* ---------------- Fotos do topo: ampliar na lateral ao passar o mouse ---------------- */
+  var zoomMQ = window.matchMedia("(hover: hover) and (min-width: 1081px)");
+  var stageDevice = document.querySelector(".stage .device");
+  document.querySelectorAll(".stage__card").forEach(function (card) {
+    var img = card.querySelector("img");
+    card.tabIndex = 0;
+    function zoomIn() {
+      if (!zoomMQ.matches || card.classList.contains("is-zoom")) return;
+      // Mede antes de aplicar a transformação. A foto cresce no espaço entre a borda da tela
+      // e o vídeo (sem cobri-lo), até a altura do vídeo, alinhada ao centro dele.
+      var d = stageDevice.getBoundingClientRect(), r = img.getBoundingClientRect();
+      var gap = 14, edge = 16, before = card.classList.contains("stage__card--before");
+      var room = before ? d.left - gap - edge : document.documentElement.clientWidth - edge - (d.right + gap);
+      var s = Math.max(1, Math.min(d.height / r.height, room / r.width));
+      var w = r.width * s;
+      var cx = before ? d.left - gap - w / 2 : d.right + gap + w / 2;
+      img.style.setProperty("--dx", cx - (r.left + r.width / 2) + "px");
+      img.style.setProperty("--dy", (d.top + d.height / 2) - (r.top + r.height / 2) + "px");
+      img.style.setProperty("--s", s.toFixed(3));
+      card.classList.add("is-zoom");
+    }
+    function zoomOut() { card.classList.remove("is-zoom"); }
+    card.addEventListener("mouseenter", zoomIn);
+    card.addEventListener("mouseleave", zoomOut);
+    card.addEventListener("focus", zoomIn);
+    card.addEventListener("blur", zoomOut);
+  });
 
   /* ---------------- Vídeo do hero (loop com controles) ---------------- */
   var loop = document.querySelector(".js-loop");

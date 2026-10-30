@@ -18,7 +18,9 @@ while ($listener.IsListening) {
   $req = $ctx.Request; $res = $ctx.Response; $fs = $null
   try {
     $path = [Uri]::UnescapeDataString($req.Url.AbsolutePath.TrimStart("/"))
-    if ($path -eq "") { $path = "index.html" }
+    # Pastas servem o index.html delas (ex.: /ciagems/ -> ciagems/index.html)
+    if ($path -eq "" -or $path.EndsWith("/")) { $path = $path + "index.html" }
+    elseif (Test-Path (Join-Path $root $path) -PathType Container) { $path = $path + "/index.html" }
     $file = [IO.Path]::GetFullPath((Join-Path $root $path))
     if (-not $file.StartsWith($root) -or -not (Test-Path $file -PathType Leaf)) {
       $res.StatusCode = 404; $res.Close(); continue
