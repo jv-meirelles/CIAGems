@@ -14,34 +14,28 @@
     var ig = "https://instagram.com/" + String(CFG.instagram).replace(/^@/, "");
     document.querySelectorAll(".js-instagram").forEach(function (a) { a.href = ig; });
   }
+  if (CFG.email) {
+    document.querySelectorAll(".js-email").forEach(function (a) { a.href = "mailto:" + CFG.email; });
+  }
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  /* ---------------- Portfólio (vem de js/config.js) ---------------- */
-  var works = Array.isArray(CFG.portfolio) ? CFG.portfolio : [];
-  if (works.length) {
-    var grid = document.getElementById("portfolioGrid");
-    works.forEach(function (w) {
-      var fig = document.createElement("figure");
-      fig.className = "work reveal";
-      var box = document.createElement("div");
-      box.className = "work__img";
-      var img = document.createElement("img");
-      img.src = w.foto; img.alt = w.titulo || "Projeto Casa C."; img.loading = "lazy";
-      box.appendChild(img);
-      var cap = document.createElement("figcaption");
-      var t = document.createElement("strong"); t.textContent = w.titulo || "";
-      var meta = document.createElement("span"); meta.textContent = [w.tipo, w.local].filter(Boolean).join(" · ");
-      cap.append(t, meta);
-      fig.append(box, cap);
-      grid.appendChild(fig);
-    });
-    grid.hidden = false;
-    document.getElementById("portfolioEmpty").hidden = true;
+  /* Aberto direto do disco (file://), link para pasta mostraria a pasta: completa com index.html */
+  if (location.protocol === "file:") {
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest("a[href]");
+      var href = a && a.getAttribute("href");
+      if (href && !/^[a-z]+:|^#/i.test(href) && /\/(#.*)?$/.test(href)) a.href = href.replace(/\/(#.*)?$/, "/index.html$1");
+    }, true);
   }
 
   /* ---------------- Cabeçalho e animações de entrada ---------------- */
   var header = document.querySelector(".header");
-  function onScroll() { header.classList.toggle("is-scrolled", window.scrollY > 8); }
+  var toTop = document.getElementById("toTop");
+  function onScroll() {
+    header.classList.toggle("is-scrolled", window.scrollY > 8);
+    toTop.classList.toggle("is-visible", window.scrollY > window.innerHeight * 0.6);
+  }
+  toTop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 

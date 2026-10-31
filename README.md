@@ -4,7 +4,8 @@ Site estático (HTML/CSS/JS puro, sem build).
 
 | Endereço | Pasta | O que é |
 |---|---|---|
-| `casacinteriores.com.br/` | raiz (`index.html`, `css/`, `js/`, `img/`) | Site principal da Casa C.: sobre, serviços, portfólio, produtos e contato. |
+| `casacinteriores.com.br/` | raiz (`index.html`, `css/`, `js/`, `img/`) | Site principal da Casa C.: sobre, serviços, portfólio e contato. |
+| `casacinteriores.com.br/projetos/<projeto>/` | `projetos/` | Uma página por projeto do portfólio (abre em nova aba a partir do carrossel). |
 | `casacinteriores.com.br/ciagems/` | `ciagems/` | Landing page da CIA (agentes de IA para arquitetos). |
 
 ## Publicar
@@ -12,18 +13,24 @@ Site estático (HTML/CSS/JS puro, sem build).
 Envie para a raiz do domínio (`public_html`, `www` ou equivalente da hospedagem):
 
 ```
-index.html   css/   js/   img/   ciagems/
+index.html   projetos/   css/   js/   img/   ciagems/
 ```
 
-Não precisam ir para o servidor: `Media/`, `IDENTIDADE VISUAL/`, `Logo/`, `Logomarca CASA C/` (material-fonte), `serve.ps1`, `README.md` e `.claude/`.
+Não precisam ir para o servidor: `Media/`, `IDENTIDADE VISUAL/`, `Logo/`, `Logomarca CASA C/` (material-fonte), `tools/`, `serve.ps1`, `README.md`, `.claude/` e `.impeccable/`.
 
 O site principal e a landing são independentes: cada um tem os próprios `css/`, `js/` e imagens.
 
 ## Site principal (raiz)
 
-- **Contatos e portfólio** em `js/config.js` (WhatsApp, mensagem, Instagram e a lista de projetos).
-- **Portfólio**: enquanto a lista estiver vazia, a seção mostra um convite para o Instagram. Coloque as fotos em `img/portfolio/` e adicione uma linha por projeto em `portfolio`.
-- **Textos** de Sobre e Serviços estão direto no `index.html`, marcados com comentário para revisão.
+- **Contatos** em `js/config.js` (WhatsApp, mensagem e Instagram).
+- **Portfólio**: as fotos vêm de `Media/CASA C/03. GALERIA DE PROJETO/` (uma pasta por projeto; a foto com "CAPA" no nome é a capa). Depois de adicionar ou trocar fotos, rode:
+
+  ```
+  powershell -ExecutionPolicy Bypass -File tools/gerar-portfolio.ps1
+  ```
+
+  O script otimiza as fotos em `img/portfolio/<projeto>/`, recria `js/projects.js` e gera as páginas `projetos/<projeto>/index.html` a partir do modelo `tools/projeto-modelo.html`. Para mudar cabeçalho, contato ou rodapé das páginas de projeto, edite o modelo e rode o script com `-SoPaginas` (não reprocessa as fotos). Para um projeto novo, cadastre o nome e o local da pasta na lista `$projetos` no início do script.
+- **Textos** de Sobre e Serviços estão direto no `index.html`.
 
 ## Ver localmente
 

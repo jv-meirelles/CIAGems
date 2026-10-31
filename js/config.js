@@ -2,7 +2,8 @@
  * ============================================================
  *  CASA C. — CONFIGURAÇÃO DO SITE PRINCIPAL
  * ============================================================
- *  Edite este arquivo para trocar contatos e o portfólio.
+ *  Edite este arquivo para trocar os contatos.
+ *  O portfólio vem de js/projects.js, gerado por tools/gerar-portfolio.ps1.
  *  (A landing da CIA tem a própria configuração em ciagems/js/config.js.)
  * ============================================================
  */
@@ -16,8 +17,7 @@ window.CASAC_CONFIG = {
   // Instagram, sem @
   instagram: "casac.interiores",
 
-  // PORTFÓLIO — enquanto estiver vazio, a seção mostra um convite para o Instagram.
-  // Para adicionar um projeto: coloque a foto em img/portfolio/ e inclua uma linha, por exemplo:
-  // { foto: "img/portfolio/sala-jardins.jpg", titulo: "Sala de estar", local: "Brasília · DF", tipo: "Residencial" },
-  portfolio: []
+  // E-mail de contato
+  email: "casacinteriores@gmail.com"
+
 };
