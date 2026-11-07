@@ -322,8 +322,7 @@ p { margin: 0; }
 .device__title { font-weight: 600; font-size: 16px; line-height: 1; display: flex; flex-direction: column; gap: 4px; }
 .device__title small { font: 400 10px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 .device__screen { position: relative; overflow: hidden; border-radius: 18px; background: #0b0b0b; aspect-ratio: var(--vratio, 16 / 9); }
-/* corta as faixas pretas gravadas nas bordas do vídeo */
-.device__screen video { width: 100%; height: 100%; object-fit: cover; transform: scale(1.045); cursor: pointer; }
+.device__screen video { width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
 
 .player { display: flex; align-items: center; gap: 6px; padding: 12px 4px 2px; }
 .player__btn { flex: none; width: 36px; height: 36px; border-radius: 50%; border: 0; background: var(--cream); color: var(--ink); display: grid; place-items: center; cursor: pointer; transition: background .2s; }
@@ -374,7 +373,8 @@ p { margin: 0; }
 /* ---------- Preço ---------- */
 .plan { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); max-width: 1080px; margin-inline: auto; border-radius: 28px; overflow: hidden; color: var(--white); border: 1px solid #222;
   background: radial-gradient(70% 60% at 100% 0%, rgba(126,217,87,.22), transparent 70%), #0b0b0b; box-shadow: 0 50px 90px -40px rgba(0,0,0,.55); }
-.plan__media { padding: 20px; display: flex; align-items: center; }
+.plan__media { padding: 20px; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+.plan__count { font: 400 clamp(56px, 6.4vw, 88px)/.9 var(--serif); letter-spacing: -.02em; text-transform: uppercase; color: var(--green); padding: 8px 4px 0; }
 .plan__media .cmp { width: 100%; }
 .plan__media .cmp__frame { aspect-ratio: 4/5; }
 .plan__media .cmp figcaption strong { color: var(--white); }
