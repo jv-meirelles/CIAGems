@@ -6,7 +6,10 @@ Site estático (HTML/CSS/JS puro, sem build).
 |---|---|---|
 | `casacinteriores.com.br/` | raiz (`index.html`, `css/`, `js/`, `img/`) | Site principal da Casa C.: sobre, serviços, portfólio e contato. |
 | `casacinteriores.com.br/projetos/<projeto>/` | `projetos/` | Uma página por projeto do portfólio (abre em nova aba a partir do carrossel). |
-| `casacinteriores.com.br/ciagems/` | `ciagems/` | Landing page da CIA (agentes de IA para arquitetos). |
+| `casacinteriores.com.br/ciagems/` | `ciagems/index.html` + `ciagems/assets/` | Vitrine da CIA em 3 categorias (imagens, gestão, templates), cada uma com uma roleta arrastável de produtos. Para incluir um produto, copie um `<li>` da categoria no lugar de uma caixa "Em breve". Preços e textos ficam direto no HTML. |
+| `casacinteriores.com.br/ciagems/pack6skills/` | `ciagems/pack6skills/` | Landing page da CIA com o pack de 6 skills. |
+| `casacinteriores.com.br/ciagems/pack4skills/` | `ciagems/pack4skills/` | Mesma landing com o pack de 4 skills (Fotografia, Aprimorar, Novo Olhar e Moodboard), preço e checkout próprios. Arquivos independentes da `pack6skills/`. |
+| `casacinteriores.com.br/ciagems/fotografia/` | `ciagems/fotografia/` | Página só da skill CIA Fotografia, com preço e checkout próprios. Arquivos independentes das outras landings. |
 
 ## Publicar
 
@@ -38,12 +41,12 @@ O site principal e a landing são independentes: cada um tem os próprios `css/`
 powershell -ExecutionPolicy Bypass -File serve.ps1
 ```
 
-Abra http://localhost:8080 (site principal) ou http://localhost:8080/ciagems/ (landing).
+Abra http://localhost:8080 (site principal) ou http://localhost:8080/ciagems/pack6skills/ (landing).
 
-## Landing CIA (`ciagems/`)
+## Landing CIA (`ciagems/pack6skills/`)
 
-- **Links** em `ciagems/js/config.js`: checkout Kirvano, comunidade no WhatsApp e Instagram.
-- **Imagens** otimizadas em `ciagems/assets/img/`, geradas a partir de `Media/`.
-- **Feedback**: prints censurados em `ciagems/assets/img/feedback/feedback-01.jpg` … `feedback-31.jpg`. Para adicionar, salve o próximo número e atualize `FEEDBACK_TOTAL` em `ciagems/js/main.js`.
+- **Links** em `ciagems/pack6skills/js/config.js`: checkout Kirvano, comunidade no WhatsApp e Instagram.
+- **Imagens** otimizadas em `ciagems/pack6skills/assets/img/`, geradas a partir de `Media/`.
+- **Feedback**: prints censurados em `ciagems/pack6skills/assets/img/feedback/feedback-01.jpg` … `feedback-31.jpg`. Para adicionar, salve o próximo número e atualize `FEEDBACK_TOTAL` em `ciagems/pack6skills/js/main.js`.
 - **Vídeo**: `cia-fotografia-na-pratica.mov` (HEVC) com reserva `cia-fotografia-na-pratica-h264.mp4` para navegadores sem suporte a HEVC.
-- Os caminhos são relativos; se alguém abrir `/ciagems` sem a barra final, a página completa a barra sozinha.
+- Os caminhos são relativos; se alguém abrir `/ciagems/pack6skills` sem a barra final, a página completa a barra sozinha.

@@ -4,7 +4,7 @@
  * ============================================================
  *  Edite este arquivo para trocar os contatos.
  *  O portfólio vem de js/projects.js, gerado por tools/gerar-portfolio.ps1.
- *  (A landing da CIA tem a própria configuração em ciagems/js/config.js.)
+ *  (A landing da CIA tem a própria configuração em ciagems/pack6skills/js/config.js.)
  * ============================================================
  */
 window.CASAC_CONFIG = {

@@ -1,20 +1,20 @@
 <!doctype html>
-<html lang="pt-BR" class="no-js">
+<html lang="pt-BR">
 <head>
   <meta charset="utf-8">
-  <!-- A página fica em uma subpasta (/ciagems/). Sem a barra final, os caminhos relativos
-       (css/, js/, assets/) apontariam para a raiz do domínio; então completamos a barra. -->
+  <!-- Vitrine da CIA em /ciagems/. Sem a barra final, os caminhos relativos (assets/, pack6skills/…)
+       apontariam para a raiz do domínio; então completamos a barra. -->
   <script>
     if (!/\/$|\.html?$/.test(location.pathname)) location.replace(location.pathname + "/" + location.search + location.hash);
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CIA · Agentes de IA para arquitetos</title>
+  <title>CIA · Skills de IA para arquitetos</title>
   <link rel="canonical" href="https://casacinteriores.com.br/ciagems/">
-  <meta name="description" content="Transforme seus projetos em imagens realistas em segundos, não em horas. A CIA reúne agentes de inteligência artificial dentro do Gemini, para arquitetos e designers de interiores.">
+  <meta name="description" content="Skills de inteligência artificial para o Gemini que transformam o print do seu projeto em imagens incríveis. Escolha entre o pack com 6 skills, o pack com 4 skills ou a CIA Fotografia.">
   <meta name="theme-color" content="#000000">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="CIA · Agentes de IA para arquitetos">
-  <meta property="og:description" content="Agentes de IA no Google Gemini que transformam o print do seu projeto em imagem realista.">
+  <meta property="og:title" content="CIA · Skills de IA para arquitetos">
+  <meta property="og:description" content="Pack com 6 skills, pack com 4 skills ou só a CIA Fotografia. Escolha o seu.">
   <meta property="og:url" content="https://casacinteriores.com.br/ciagems/">
   <meta property="og:image" content="https://casacinteriores.com.br/ciagems/assets/img/og-cover.jpg">
   <link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
@@ -22,11 +22,170 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jost:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap">
-  <link rel="preload" as="image" href="assets/img/hero-depois.jpg">
-  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Paleta oficial da CIA: #000000 · #ffffff · #7ed957 · #f4f3ef */
+    :root {
+      --black: #000;
+      --white: #fff;
+      --green: #7ed957;
+      --cream: #f4f3ef;
+      --ink: #0b0b0b;
+      --text: #e9e8e3;
+      --muted: #a3a39d;
+      --line: #232323;
+      --serif: "Instrument Serif", "Times New Roman", serif;
+      --sans: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --mono: "DM Mono", ui-monospace, Consolas, monospace;
+      --ease: cubic-bezier(.16, 1, .3, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scrollbar-color: #2e2e2e var(--black); }
+    body { margin: 0; background: var(--black); color: var(--text); font: 400 17px/1.6 var(--sans); overflow-x: hidden; }
+    ::selection { background: var(--green); color: var(--black); }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; }
+    h1, h2, p { margin: 0; }
+    :focus-visible { outline: 2px solid var(--green); outline-offset: 4px; border-radius: 6px; }
+
+    .container { width: min(1200px, 100% - 40px); margin-inline: auto; }
+    .brand-mark { width: 44px; height: 44px; border-radius: 12px; background: #0d0d0d; box-shadow: inset 0 0 0 1px #2a2a2a; color: var(--white); display: grid; place-items: center; flex: none; }
+    .brand-mark svg { width: 34px; height: 34px; }
+
+    /* ---------- Topo ---------- */
+    .header { position: absolute; inset: 0 0 auto; z-index: 10; }
+    .header__inner { display: flex; align-items: center; justify-content: space-between; height: 84px; }
+    .header__link { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; text-decoration: none; padding: 10px 18px; border: 1.5px solid #3a3a3a; border-radius: 999px; transition: border-color .25s, background .25s, color .25s; }
+    .header__link:hover { border-color: var(--green); color: var(--green); }
+    .header__link svg { width: 17px; height: 17px; }
+
+    .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+    /* ---------- Categorias ---------- */
+    main { position: relative; isolation: isolate; }
+    main::before { content: ""; position: absolute; inset: -84px 0 auto; height: 560px; z-index: -1; background: radial-gradient(50% 60% at 50% 0%, rgba(126,217,87,.2), transparent 70%); }
+    /* Cada categoria tem a sua cor: preto e creme da CIA, cinza da Casa C. (#d9d9d9); o verde fica nos detalhes */
+    .cat { padding: 96px 0 72px; }
+    .cat:first-of-type { padding-top: 150px; }
+    .cat--cream { background: var(--cream); color: var(--ink); }
+    .cat--light { background: #d9d9d9; color: var(--ink); }
+    .cat--cream .cat__head h2, .cat--light .cat__head h2 { color: var(--black); }
+    .cat--cream .cat__head p, .cat--light .cat__head p { color: #5d5d58; }
+    .cat__head { margin-bottom: 30px; }
+    .cat__head h2 { font: 400 clamp(38px, 5vw, 64px)/.95 var(--serif); letter-spacing: -.02em; text-transform: uppercase; color: var(--white); text-wrap: balance; }
+    .cat__head p { margin-top: 12px; font-size: clamp(16px, 1.4vw, 18px); font-weight: 300; color: #c9c9c4; max-width: 60ch; text-wrap: balance; }
+
+    /* Faixa arrastável (mesmo gesto do feedback das landings), sem andar sozinha */
+    .marquee { position: relative; overflow: hidden; cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+    .marquee.is-dragging { cursor: grabbing; }
+    .marquee.is-dragging .item { pointer-events: none; }
+    .marquee img { -webkit-user-drag: none; }
+    .marquee .shelf { padding-inline: max(20px, (100% - 1200px) / 2); }
+    .marquee:not(.is-draggable) { cursor: auto; -webkit-mask-image: none; mask-image: none; }
+    /* Quando os produtos cabem na tela, ficam centralizados */
+    .marquee:not(.is-draggable) .shelf { margin-inline: auto; }
+
+    /* ---------- Cartões de produto ---------- */
+    .shelf { list-style: none; padding: 14px 0 24px; margin: 0; display: flex; gap: 20px; width: max-content; will-change: transform; }
+    .shelf > li { display: flex; flex: none; width: 340px; }
+    .item { position: relative; display: flex; flex-direction: column; width: 100%; min-height: 540px; text-decoration: none; color: inherit; border: 1px solid var(--line); border-radius: 24px; background: #070707; overflow: hidden; transition: border-color .5s var(--ease), transform .6s var(--ease), box-shadow .6s var(--ease); }
+    .item:hover { border-color: #3d5c30; transform: translateY(-4px); box-shadow: 0 30px 60px -30px rgba(0,0,0,.95); }
+    .item:focus-visible { outline-offset: 6px; border-radius: 24px; }
+
+    /* Destaque do pack completo */
+    .item--featured { border-color: #2f4726; background: radial-gradient(90% 60% at 100% 100%, rgba(126,217,87,.16), transparent 70%), #070707; }
+
+    .item__media { position: relative; margin: 12px 12px 0; border-radius: 16px; overflow: hidden; background: #151515; aspect-ratio: 4 / 3; }
+    .item__media > img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.02); transition: transform 1.2s var(--ease); }
+    .item:hover .item__media > img { transform: scale(1.08); }
+    /* Miniatura do print original: mostra de onde a imagem saiu */
+    .item__print { position: absolute; left: 12px; bottom: 12px; width: 27%; border-radius: 9px; overflow: hidden; border: 3px solid var(--white); box-shadow: 0 14px 30px -10px rgba(0,0,0,.7); transform: rotate(-4deg); transform-origin: bottom left; transition: transform .7s var(--ease); }
+    .item__print img { aspect-ratio: 4 / 5; width: 100%; object-fit: cover; }
+    .item:hover .item__print { transform: rotate(0deg) translateY(-4px) scale(1.06); }
+    .tag { position: absolute; font: 500 11px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; padding: 7px 10px; border-radius: 999px; }
+    .tag--print { left: 50%; bottom: 6px; transform: translateX(-50%); background: rgba(0,0,0,.72); color: var(--white); letter-spacing: .08em; padding: 4px 7px; }
+    .tag--cia { right: 10px; top: 10px; background: var(--green); color: var(--black); }
+    .tag--star { left: 10px; top: 10px; background: var(--black); color: var(--green); box-shadow: inset 0 0 0 1px #2f4726; }
+
+    .item__body { flex: 1; padding: 22px 22px 22px; }
+    .item h3 { margin: 0; font: 400 30px/1.05 var(--serif); text-transform: uppercase; letter-spacing: -.01em; color: var(--white); }
+    .item h3 span { font: 400 15px/1 var(--sans); text-transform: none; letter-spacing: 0; color: var(--green); white-space: nowrap; }
+    .item__desc { margin-top: 10px; color: var(--muted); font-weight: 300; font-size: 15px; line-height: 1.55; }
+    .skills { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-wrap: wrap; gap: 6px; }
+    .skills li { font-size: 12px; line-height: 1; padding: 7px 10px 7px 9px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; color: var(--white); background: #141a11; box-shadow: inset 0 0 0 1px #2f4726; }
+    .skills li::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--green); }
+
+    .item__buy { padding: 20px 22px 22px; display: flex; align-items: flex-end; justify-content: space-between; gap: 14px; }
+    .item__body + .item__buy { border-top: 1px solid var(--line); }
+    .item__times { font-size: 13px; color: var(--muted); }
+    .item__price { margin-top: 2px; font: 600 34px/1 var(--sans); color: var(--white); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+    .item__price span { font-size: .5em; font-weight: 500; vertical-align: .55em; margin-right: 3px; letter-spacing: 0; }
+    .item__cash { margin-top: 4px; font-size: 13px; color: var(--muted); white-space: nowrap; }
+    .item__cash strong { color: var(--white); font-weight: 500; }
+    .item__go { display: inline-flex; align-items: center; gap: 10px; padding: 11px 11px 11px 18px; border-radius: 999px; font: 500 14px/1 var(--sans); background: #151515; color: var(--white); box-shadow: inset 0 0 0 1px #2c2c2c; white-space: nowrap; transition: background .4s var(--ease), color .4s var(--ease); }
+    .item__go svg { width: 26px; height: 26px; padding: 6px; border-radius: 50%; background: var(--green); color: var(--black); flex: none; transition: transform .5s var(--ease); }
+    .item:hover .item__go, .item--featured .item__go { background: var(--green); color: var(--black); }
+    .item:hover .item__go svg, .item--featured .item__go svg { background: var(--black); color: var(--green); }
+    .item:hover .item__go svg { transform: rotate(-45deg); }
+
+    /* Caixas "em breve": guardam o lugar dos próximos produtos */
+    .item--soon { align-items: center; justify-content: center; gap: 16px; border-style: dashed; border-color: #2a2a2a; background: repeating-linear-gradient(135deg, #070707 0 14px, #0a0a0a 14px 28px); }
+    .item--soon:hover { transform: none; box-shadow: none; border-color: #2a2a2a; }
+    .item--soon .brand-mark { opacity: .55; }
+    .item--soon p { display: inline-flex; align-items: center; gap: 9px; font: 500 12px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: #8b8b86; }
+    .item--soon p::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+    .cat--cream .item--soon, .cat--cream .item--soon:hover { border-color: #c9c7be; background: #ecebe5 repeating-linear-gradient(135deg, #efeee8 0 14px, #eae9e2 14px 28px); }
+    .cat--cream .item--soon p { color: #5d5d58; }
+    .cat--light .item--soon, .cat--light .item--soon:hover { border-color: #b3b3b3; background: #d0d0d0 repeating-linear-gradient(135deg, #d3d3d3 0 14px, #cecece 14px 28px); }
+    .cat--light .item--soon p { color: #3f3f3c; }
+
+    /* ---------- Garantias ---------- */
+    .promise { list-style: none; padding: 0; margin: 72px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+    .promise li { padding: 28px 24px 0 0; }
+    .promise strong { display: block; font: 400 26px/1.1 var(--serif); color: var(--white); text-transform: uppercase; }
+    .promise span { display: block; margin-top: 8px; color: var(--muted); font-weight: 300; font-size: 15px; max-width: 34ch; }
+    .promise a { color: var(--green); text-underline-offset: 3px; }
+
+    /* ---------- Rodapé ---------- */
+    .footer { margin-top: 120px; border-top: 1px solid #161616; padding: 56px 0 64px; color: #8b8b86; }
+    .footer__inner { display: grid; gap: 16px; justify-items: center; text-align: center; }
+    .footer__links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 28px; }
+    .footer__links a { text-decoration: none; color: #d6d6d1; font-size: 15px; }
+    .footer__links a:hover { color: var(--green); }
+    .footer small { font-size: 12px; max-width: 70ch; }
+    .footer__credit { font-size: 13px; color: #7d7d78; padding-top: 16px; border-top: 1px solid #1d1d1d; width: min(520px, 100%); }
+    .footer__credit strong { color: #d6d6d1; font-weight: 500; }
+
+    /* ---------- Entrada (os cards já estão visíveis; o movimento só refina) ---------- */
+    @keyframes rise { from { opacity: .001; transform: translateY(28px); filter: blur(6px); } }
+    .cat { animation: rise 1.1s var(--ease) both; }
+    .cat:nth-of-type(2) { animation-delay: .1s; }
+    .cat:nth-of-type(3) { animation-delay: .2s; }
+
+    /* ---------- Responsivo ---------- */
+    @media (max-width: 700px) {
+      body { font-size: 16px; }
+      .container { width: calc(100% - 32px); }
+      .header__inner { height: 70px; }
+      .header__link { padding: 9px 14px; font-size: 13px; }
+      .cat { padding: 64px 0 48px; }
+      .cat:first-of-type { padding-top: 110px; }
+      .cat__head { margin-bottom: 22px; }
+      .shelf { gap: 14px; }
+      .shelf > li { width: 286px; }
+      .marquee .shelf { padding-inline: 16px; }
+      .item { min-height: 520px; }
+      .promise { grid-template-columns: 1fr; gap: 24px; }
+      .footer { margin-top: 88px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+    }
+  </style>
 </head>
 <body>
-  <!-- Ícone oficial (colchetes + cubo) reutilizado na página -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <symbol id="cia-icon" viewBox="0 0 100 100">
       <path d="M18 36V18h18M64 18h18v18M82 64v18H64M36 82H18V64" fill="none" stroke="currentColor" stroke-width="4"/>
@@ -35,379 +194,220 @@
     <symbol id="wa-icon" viewBox="0 0 24 24">
       <path fill="currentColor" d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.3-.4.3-.4.7-1.3a.5.5 0 000-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.8 11.9 11.9 0 004.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 001.8-1.3 2.3 2.3 0 00.2-1.3c-.1-.1-.3-.2-.5-.3z"/>
     </symbol>
+    <symbol id="arrow" viewBox="0 0 24 24">
+      <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
   </svg>
 
-  <!-- ===================== HEADER ===================== -->
-  <header class="header" id="topo">
+  <header class="header">
     <div class="container header__inner">
-      <a href="#topo" class="header__brand" aria-label="CIA — início">
-        <span class="brand-mark"><svg aria-hidden="true"><use href="#cia-icon"/></svg></span>
-      </a>
-      <nav class="header__nav" aria-label="Principal">
-        <a href="#antes-depois">Antes e depois</a>
-        <a href="#como-funciona">Como funciona</a>
-        <a href="#agentes">Agentes</a>
-        <a href="#preco">Preço</a>
-        <a href="#faq">Dúvidas</a>
-      </nav>
-      <div class="header__ctas">
-        <a href="https://chat.whatsapp.com/DmMdWaeo3gD4I7mkdmJ39l" class="header__link js-community" target="_blank" rel="noopener">Comunidade no WhatsApp</a>
-        <a href="https://pay.kirvano.com/5ab20fad-241f-4e62-a92f-2e8d2a5e099b" class="btn btn--dark btn--sm js-buy" target="_blank" rel="noopener">Comprar agora</a>
-      </div>
+      <span class="brand-mark" role="img" aria-label="CIA"><svg aria-hidden="true"><use href="#cia-icon"/></svg></span>
+      <a href="https://chat.whatsapp.com/DmMdWaeo3gD4I7mkdmJ39l" class="header__link" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa-icon"/></svg> Comunidade no WhatsApp</a>
     </div>
   </header>
 
   <main>
-    <!-- ===================== HERO ===================== -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero__copy reveal">
-          <p class="eyebrow"><span class="dot"></span> CIA</p>
-          <h1 class="display">Agentes de IA<br>para arquitetos</h1>
-          <p class="hero__sub">Transforme seus projetos em imagens realistas <em>em segundos, não em horas.</em></p>
-          <p class="lead">A C.IA reúne agentes de inteligência artificial em formato Skills, arquivos que você baixa e instala no Gemini (por enquanto), transformando seus projetos em imagens incríveis com praticidade e rapidez. Compatível com diferentes programas de modelagem 3D, não apenas SketchUp!</p>
-          <div class="hero__ctas">
-            <a href="#preco" class="btn btn--green">Comprar agora</a>
-            <a href="https://chat.whatsapp.com/DmMdWaeo3gD4I7mkdmJ39l" class="btn btn--ghost js-community" target="_blank" rel="noopener"><svg class="btn__icon" aria-hidden="true"><use href="#wa-icon"/></svg> Entrar na comunidade</a>
-          </div>
-        </div>
+    <h1 class="visually-hidden">CIA: produtos de IA para arquitetos</h1>
 
-        <!-- Palco central: vídeo do agente com as imagens de antes/depois por trás -->
-        <div class="stage" aria-label="Demonstração: do print à imagem realista">
-          <figure class="stage__card stage__card--before reveal">
-            <figcaption class="stage__label mono">Antes · Print</figcaption>
-            <img src="assets/img/hero-antes.jpg" alt="Print do SketchUp de um quarto infantil com beliche de madeira e parede de bolinhas" width="440" height="550">
-          </figure>
+    <section class="cat" aria-labelledby="cat-imagens">
+      <header class="container cat__head">
+        <h2 id="cat-imagens">IA para imagens arquitetônicas</h2>
+        <p>Renderização, humanização, fotografia, moodboards e apresentações.</p>
+      </header>
+      <div class="marquee" aria-label="IA para imagens arquitetônicas: arraste para o lado para ver mais">
+        <ul class="shelf">
 
-          <span class="stage__arrow" aria-hidden="true">→</span>
-
-          <div class="device reveal">
-            <div class="device__bar">
-              <span class="device__logo"><svg aria-hidden="true"><use href="#cia-icon"/></svg></span>
-              <span class="device__title">CIA<small>Fotografia</small></span>
+        <li>
+          <a class="item item--featured" href="pack6skills/">
+            <div class="item__media">
+              <img src="assets/img/humanizar-depois.jpg" alt="Sala com marcenaria em madeira e uma pessoa caminhando, gerada pela CIA Humanizar" width="1600" height="898" loading="lazy">
+              <span class="tag tag--star">Mais completo</span>
+              <span class="tag tag--cia">CIA</span>
+              <span class="item__print"><img src="assets/img/humanizar-antes.jpg" alt="" loading="lazy"><span class="tag tag--print">Antes</span></span>
             </div>
-            <div class="device__tabs mono" role="group" aria-label="Ir para a etapa do vídeo">
-              <button type="button" class="is-active" data-step="0">1 · Enviar</button>
-              <button type="button" data-step="1">2 · IA processa</button>
-              <button type="button" data-step="2">3 · Resultado</button>
+            <div class="item__body">
+              <h3>Pack completo <span>· 6 skills</span></h3>
+              <p class="item__desc">Todas as skills da CIA: do print fotorrealista à luz, aos novos ângulos, ao moodboard e às pessoas na cena.</p>
+              <ul class="skills" aria-label="Skills incluídas">
+                <li>Fotografia</li><li>Novo Olhar</li><li>Aprimorar</li><li>Moodboard</li><li>Mood Light</li><li>Humanizar</li>
+              </ul>
             </div>
-            <div class="device__screen">
-              <video class="js-loop" muted loop playsinline preload="none" aria-label="Vídeo do agente CIA Fotografia transformando um print em imagem realista">
-                <source data-src="assets/video/cia-fotografia-na-pratica.mov" type='video/mp4; codecs="hvc1"'>
-                <source data-src="assets/video/cia-fotografia-na-pratica-h264.mp4" type="video/mp4">
-              </video>
-            </div>
-            <div class="player" aria-label="Controles do vídeo">
-              <button type="button" class="player__btn js-back" aria-label="Voltar 5 segundos">
-                <svg viewBox="0 0 24 24"><path d="M11 7L6 12l5 5M18 7l-5 5 5 5"/></svg>
-              </button>
-              <button type="button" class="player__btn player__btn--main js-toggle" aria-label="Pausar">
-                <svg class="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></svg>
-                <svg class="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg>
-              </button>
-              <button type="button" class="player__btn js-restart" aria-label="Voltar ao início">
-                <svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 108-8 8.5 8.5 0 00-6 2.5L4 8.5M4 4v4.5h4.5"/></svg>
-              </button>
-              <input type="range" class="player__bar js-seek" min="0" max="1000" value="0" step="1" aria-label="Posição do vídeo">
-              <span class="player__time mono js-time">0:00</span>
-            </div>
-          </div>
-
-          <span class="stage__arrow" aria-hidden="true">→</span>
-
-          <figure class="stage__card stage__card--after reveal">
-            <figcaption class="stage__label stage__label--green mono">Depois · CIA</figcaption>
-            <img src="assets/img/hero-depois.jpg" alt="Imagem fotorrealista do mesmo quarto infantil gerada pela CIA" width="440" height="550">
-          </figure>
-        </div>
-
-        <ul class="hero__proof">
-          <li>Agentes do Google Gemini</li>
-          <li>Sem prompts</li>
-          <li>Funciona com SketchUp e outros programas 3D</li>
-          <li>Roda no navegador, sem placa de vídeo</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ===================== ANTES E DEPOIS ===================== -->
-    <section class="section" id="antes-depois">
-      <div class="container">
-        <header class="section__head reveal">
-          <p class="eyebrow"><span class="dot"></span> Antes e depois</p>
-          <h2 class="display display--md">Do print <em>à imagem realista.</em></h2>
-          <p class="lead">Arraste a divisória de cada imagem para comparar. Projetos reais transformados pelos agentes CIA.</p>
-        </header>
-
-        <div class="compares" id="compares">
-          <!-- preenchido por js/main.js -->
-        </div>
-
-        <h3 class="gallery__title reveal">Mais resultados <span>· toque ou passe o mouse para ver o print original</span></h3>
-        <div class="gallery">
-          <!-- preenchido por js/main.js -->
-        </div>
-
-        <div class="center reveal">
-          <a href="#preco" class="btn btn--dark">QUERO ESSE RESULTADO NOS MEUS PROJETOS</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== DOR / PROPOSTA ===================== -->
-    <section class="section section--dark">
-      <div class="container split">
-        <div class="reveal">
-          <p class="eyebrow eyebrow--light">Por que a CIA</p>
-          <h2 class="display display--md"><span class="text-green">Você faz o projeto.</span><br><em>A CIA te ajuda com o resto.</em></h2>
-          <p class="lead lead--light">Terceirizar render custa caro e atrasa a apresentação. Aprender um software de render toma semanas. A CIA encurta esse caminho: do print à imagem que vende o projeto.</p>
-        </div>
-        <ul class="nolist reveal">
-          <li><em>Sem</em> configurar iluminação</li>
-          <li><em>Sem</em> configurar materiais</li>
-          <li><em>Sem</em> escrever prompts</li>
-          <li><em>Sem</em> perder horas com render</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ===================== COMO FUNCIONA ===================== -->
-    <section class="section" id="como-funciona">
-      <div class="container">
-        <header class="section__head reveal">
-          <p class="eyebrow"><span class="dot"></span> Como funciona</p>
-          <h2 class="display display--md">Três passos. <em>Nenhum prompt.</em></h2>
-        </header>
-
-        <ol class="steps">
-          <li class="step reveal">
-            <span class="step__num mono">01</span>
-            <div class="step__icon"><svg viewBox="0 0 24 24"><path d="M4 16v3a1 1 0 001 1h14a1 1 0 001-1v-3M12 4v11M7.5 8.5L12 4l4.5 4.5"/></svg></div>
-            <h3>Exporte a imagem</h3>
-            <p>Exporte a vista do SketchUp (ou de outro programa 3D) e envie ao agente.</p>
-          </li>
-          <li class="step reveal">
-            <span class="step__num mono">02</span>
-            <div class="step__icon"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></svg></div>
-            <h3>O agente CIA processa</h3>
-            <p>O agente CIA já vem treinado: interpreta materiais, luz e composição e orienta o Gemini a gerar a cena sem que você precise descrever nada.</p>
-          </li>
-          <li class="step reveal">
-            <span class="step__num mono">03</span>
-            <div class="step__icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
-            <h3>Receba a imagem realista</h3>
-            <p>Em segundos, uma nova imagem fotorrealista mantendo o layout do seu projeto, pronta para apresentar ao cliente ou publicar.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ===================== AGENTES ===================== -->
-    <section class="section section--cream" id="agentes">
-      <div class="container">
-        <header class="section__head reveal">
-          <p class="eyebrow"><span class="dot"></span> Os agentes</p>
-          <h2 class="display display--md">Um time de IA <em>para cada etapa da apresentação.</em></h2>
-          <p class="lead">Cada agente resolve uma etapa: do render fotorrealista ao moodboard, à luz e à humanização da cena.</p>
-        </header>
-
-        <div class="agents">
-          <article class="agent reveal"><span class="tag mono">Favorito</span><svg class="agent__icon"><use href="#cia-icon"/></svg><h3>CIA Fotografia</h3><p>Transforma um print do SketchUp em uma imagem fotorrealista, mantendo layout, proporções e materiais do projeto.</p></article>
-          <article class="agent reveal"><svg class="agent__icon"><use href="#cia-icon"/></svg><h3>CIA Novo Olhar</h3><p>Cria novos ângulos e perspectivas a partir de uma única imagem, gerando diferentes enquadramentos automaticamente.</p></article>
-          <article class="agent reveal"><svg class="agent__icon"><use href="#cia-icon"/></svg><h3>CIA Aprimorar</h3><p>Melhora automaticamente a qualidade dos seus renders, deixando as imagens mais nítidas e realistas.</p></article>
-          <article class="agent reveal"><svg class="agent__icon"><use href="#cia-icon"/></svg><h3>CIA Moodboard</h3><p>Gera um moodboard completo a partir de uma única imagem, facilitando a apresentação do conceito.</p></article>
-          <article class="agent reveal"><svg class="agent__icon"><use href="#cia-icon"/></svg><h3>CIA Mood Light</h3><p>Altera a iluminação e o clima da imagem, criando diferentes cenários e atmosferas.</p></article>
-          <article class="agent reveal"><svg class="agent__icon"><use href="#cia-icon"/></svg><h3>CIA Humanizar</h3><p>Adiciona pessoas e elementos de humanização, deixando as cenas mais naturais e atrativas.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== COMO COMPRAR ===================== -->
-    <section class="section section--dark" id="comprar">
-      <div class="container">
-        <header class="section__head reveal">
-          <p class="eyebrow eyebrow--light"><span class="dot"></span> Como comprar</p>
-          <h2 class="display display--md">Acesso aos agentes <em>em três passos.</em></h2>
-        </header>
-        <ol class="buy-steps">
-          <li class="reveal"><p>Clique em <strong>Comprar agora</strong> e escolha os agentes de IA que deseja adquirir.</p></li>
-          <li class="reveal"><p>Siga as instruções do checkout seguro para <strong>finalizar o pagamento</strong>.</p></li>
-          <li class="reveal"><p>Após a confirmação, você recebe <strong>acesso à plataforma</strong> com aulas, tutoriais e os links para baixar as 6 skills.</p></li>
-        </ol>
-        <div class="center reveal">
-          <a href="#preco" class="btn btn--green">Comprar agora</a>
-          <p class="buy-note">Pagamento processado pela Kirvano. Ficou com dúvida? <a href="https://chat.whatsapp.com/DmMdWaeo3gD4I7mkdmJ39l" class="js-community" target="_blank" rel="noopener">Pergunte na nossa comunidade do WhatsApp</a>.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== DIFERENCIAL ===================== -->
-    <section class="section" id="diferencial">
-      <div class="container">
-        <header class="section__head reveal">
-          <p class="eyebrow"><span class="dot"></span> Diferencial</p>
-          <h2 class="display display--md">Por que o Pack CIA <em>é diferente?</em></h2>
-          <p class="lead">Agentes de inteligência artificial em formato Skills, desenvolvidos para a rotina de arquitetos e designers de interiores. Baixe e instale no Gemini (por enquanto) e transforme seus prints de modelagem em imagens incríveis, sem complicação e sem precisar dominar prompts!</p>
-          <p class="diff__motto">Criado por quem entende de projetos, para quem vive de projetar.</p>
-        </header>
-
-        <div class="diff">
-          <div class="diff__box diff__box--others reveal">
-            <h3 class="mono">Com outras ferramentas de IA</h3>
-            <ul>
-              <li>Você precisa escrever <strong>prompts complexos</strong> para conseguir o resultado desejado.</li>
-              <li>Cada ferramenta exige <strong>um processo diferente</strong> e pode consumir seu tempo.</li>
-              <li>Você pode gastar <strong>horas ajustando comandos</strong> até chegar ao resultado ideal.</li>
-              <li>Nem sempre o resultado <strong>respeita as características</strong> do seu projeto original.</li>
-            </ul>
-          </div>
-          <div class="diff__box diff__box--cia reveal">
-            <h3 class="mono">Com o Pack C.IA</h3>
-            <ul>
-              <li><strong>Sem precisar dominar prompts:</strong> instale a Skill no Gemini, envie seu print e deixe o agente orientar o processo.</li>
-              <li><strong>Compatível com diferentes programas de modelagem:</strong> utilize seus prints, não importa qual software você utiliza.</li>
-              <li><strong>Diversas possibilidades em um só pack:</strong> transforme imagens em fotografias realistas, humanize cenas, explore novos ângulos, crie moodboards e muito mais.</li>
-              <li><strong>Skills para baixar e instalar:</strong> tenha seus agentes disponíveis em arquivos próprios, prontos para utilizar no Gemini.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== PREÇO ===================== -->
-    <section class="section section--cream" id="preco">
-      <div class="container">
-        <header class="section__head reveal">
-          <p class="eyebrow"><span class="dot"></span> Investimento</p>
-          <h2 class="display display--md">Todos os 6 skills <em>em um só pack.</em></h2>
-        </header>
-
-        <article class="plan reveal">
-          <div class="plan__media" id="planCompare">
-            <p class="plan__count">6 skills</p>
-            <!-- comparador preenchido por js/main.js -->
-          </div>
-
-          <div class="plan__body">
-            <p class="plan__tag mono">Pack completo</p>
-            <h3 class="plan__title">CIA · IA para arquitetos</h3>
-            <p class="plan__desc">Agentes de inteligência artificial em formato skill dentro do Gemini que transformam os prints do seu projeto em imagens realistas, sem escrever prompts.</p>
-
-            <ul class="plan__list">
-              <li>6 SKILLS: Fotografia, Novo Olhar, Aprimorar, Moodboard, Mood Light e Humanizar</li>
-              <li>Acesso à plataforma com aulas completas e tutoriais</li>
-              <li><span>Links para baixar as skills e usar no Gemini.<sup>**</sup></span></li>
-              <li>Funciona com SketchUp e outros programas de modelagem 3D</li>
-              <li>Comunidade no WhatsApp com a equipe CIA</li>
-              <li>Garantia de 7 dias</li>
-            </ul>
-
-            <div class="plan__price">
+            <div class="item__buy">
               <div>
-                <p class="plan__installments"><span class="plan__times">12x de</span> <strong>R$ 25,39</strong></p>
-                <p class="plan__cash">ou <strong>R$ 247,00</strong> à vista</p>
+                <p class="item__times">12x de</p>
+                <p class="item__price"><span>R$</span>25,39</p>
+                <p class="item__cash">ou <strong>R$ 247,00</strong> à vista</p>
               </div>
-              <div class="buy-row">
-                <a href="https://pay.kirvano.com/5ab20fad-241f-4e62-a92f-2e8d2a5e099b" class="btn btn--green js-buy" target="_blank" rel="noopener">Quero a CIA</a>
-                <span class="gmail-hint"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 22a10 10 0 100-20 10 10 0 000 20zM12 16v-4M12 8h.01"/></svg><span>No checkout, use um e-mail <strong>@gmail</strong></span></span>
-              </div>
+              <span class="item__go">Conhecer o pack <svg aria-hidden="true"><use href="#arrow"/></svg></span>
             </div>
-            <p class="plan__note">**Acesse os agentes pelo Gemini, conforme as condições do produto adquirido. A utilização está sujeita aos limites e à disponibilidade da plataforma.</p>
-          </div>
-        </article>
+          </a>
+        </li>
+
+        <li>
+          <a class="item" href="pack4skills/">
+            <div class="item__media">
+              <img src="assets/img/moodboard-depois.jpg" alt="Moodboard com amostras de madeira, tecido, pedra e ladrilho, gerado pela CIA Moodboard" width="817" height="1024" loading="lazy">
+              <span class="tag tag--cia">CIA</span>
+              <span class="item__print"><img src="assets/img/moodboard-antes.jpg" alt="" loading="lazy"><span class="tag tag--print">Antes</span></span>
+            </div>
+            <div class="item__body">
+              <h3>Pack essencial <span>· 4 skills</span></h3>
+              <p class="item__desc">As quatro essenciais para apresentar um projeto: imagem realista, novos ângulos, render aprimorado e moodboard.</p>
+              <ul class="skills" aria-label="Skills incluídas">
+                <li>Fotografia</li><li>Novo Olhar</li><li>Aprimorar</li><li>Moodboard</li>
+              </ul>
+            </div>
+            <div class="item__buy">
+              <div>
+                <p class="item__times">12x de</p>
+                <p class="item__price"><span>R$</span>20,27</p>
+                <p class="item__cash">ou <strong>R$ 197,00</strong> à vista</p>
+              </div>
+              <span class="item__go">Conhecer o pack <svg aria-hidden="true"><use href="#arrow"/></svg></span>
+            </div>
+          </a>
+        </li>
+
+        <li>
+          <a class="item" href="fotografia/">
+            <div class="item__media">
+              <img src="assets/img/cozinha-depois.jpg" alt="Cozinha com marcenaria verde e bancada clara, gerada pela CIA Fotografia" width="1020" height="1280" loading="lazy">
+              <span class="tag tag--cia">CIA</span>
+              <span class="item__print"><img src="assets/img/cozinha-antes.jpg" alt="" loading="lazy"><span class="tag tag--print">Print</span></span>
+            </div>
+            <div class="item__body">
+              <h3>CIA Fotografia <span>· 1 skill</span></h3>
+              <p class="item__desc">Transforma um print do SketchUp em uma imagem fotorrealista. Basta enviar a imagem, sem precisar escrever prompts.</p>
+              <ul class="skills" aria-label="Skills incluídas">
+                <li>Fotografia</li>
+              </ul>
+            </div>
+            <div class="item__buy">
+              <div>
+                <p class="item__times">12x de</p>
+                <p class="item__price"><span>R$</span>10,02</p>
+                <p class="item__cash">ou <strong>R$ 97,00</strong> à vista</p>
+              </div>
+              <span class="item__go">Conhecer a skill <svg aria-hidden="true"><use href="#arrow"/></svg></span>
+            </div>
+          </a>
+        </li>
+        <li class="soon"><div class="item item--soon"><span class="brand-mark" aria-hidden="true"><svg><use href="#cia-icon"/></svg></span><p>Em breve</p></div></li>
+        </ul>
       </div>
     </section>
 
-    <!-- ===================== FEEDBACK (prints da comunidade) ===================== -->
-    <section class="section section--dark feedback" id="feedback">
-      <div class="container">
-        <header class="section__head reveal">
-          <p class="eyebrow eyebrow--light"><span class="dot"></span> Feedback</p>
-          <h2 class="display display--md">Resultado <em>dos alunos.</em></h2>
-          <p class="lead lead--light">Prints enviados na comunidade por quem já usa os agentes CIA.</p>
-        </header>
-      </div>
-      <div class="marquee" id="feedbackMarquee" aria-label="Prints de clientes no WhatsApp. Arraste para o lado para ver mais.">
-        <div class="marquee__track" id="feedbackTrack">
-          <!-- preenchido por js/main.js -->
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== FAQ ===================== -->
-    <section class="section" id="faq">
-      <div class="container faq">
-        <header class="section__head section__head--left reveal">
-          <p class="eyebrow"><span class="dot"></span> Dúvidas frequentes</p>
-          <h2 class="display display--md">Antes de <em>começar.</em></h2>
-          <a href="https://chat.whatsapp.com/DmMdWaeo3gD4I7mkdmJ39l" class="btn btn--ghost js-community" target="_blank" rel="noopener"><svg class="btn__icon" aria-hidden="true"><use href="#wa-icon"/></svg> Tirar dúvidas na comunidade</a>
-        </header>
-        <div class="faq__list reveal">
-          <details open><summary>Preciso saber usar IA ou escrever prompt?</summary><p>Não. Os agentes são <strong>Gems do Gemini</strong> já configurados: você abre no navegador, envia a imagem exportada do seu 3D e recebe o resultado. <strong>Nenhum prompt, nenhum programa novo</strong>, nenhuma configuração.</p></details>
-          <details><summary>Funciona com qual programa de 3D?</summary><p>Com qualquer um: SketchUp, Revit, 3ds Max, Blender, Enscape, Lumion… O agente trabalha em cima da <strong>imagem exportada</strong>, então basta o seu 3D exportar uma imagem em boa resolução.</p></details>
-          <details><summary>Quando recebo meu acesso depois da compra?</summary><p>O acesso chega no seu e-mail, enviado em nome da <strong>Kirvano</strong> (a plataforma de pagamento), com o passo a passo de como entrar. Digite o e-mail certinho no checkout e use um <strong>@gmail</strong>. Se a mensagem não aparecer, procure na caixa de <strong>spam</strong> ou na <strong>lixeira</strong>.</p></details>
-          <details><summary>Posso comprar com qualquer e-mail?</summary><p><strong>Use um @gmail</strong>: os agentes são Gems do Gemini e a liberação vai direto para a conta Google desse e-mail. Se você já comprou com outro e-mail, avise na nossa <a href="https://chat.whatsapp.com/DmMdWaeo3gD4I7mkdmJ39l" class="js-community" target="_blank" rel="noopener">comunidade do WhatsApp</a> que a equipe ajuda.</p></details>
-          <details><summary>Como aprendo a usar os agentes?</summary><p>Dentro da plataforma: <strong>assista às aulas e aos tutoriais</strong>. Lá está explicado, passo a passo, como usar cada um dos 6 agentes e como exportar a imagem do seu 3D do jeito certo.</p></details>
-          <details><summary>Preciso de um computador potente?</summary><p>Não. O processamento acontece no Google Gemini, na nuvem. Você usa pelo <strong>navegador ou pelo celular</strong>.</p></details>
-          <details><summary>Tem garantia?</summary><p>Sim. Você tem <strong>7 dias de garantia</strong> a partir da compra.</p></details>
-          <details><summary>Como falo com a equipe?</summary><p>Todo o contato com a equipe CIA é feito pela nossa <strong>comunidade no WhatsApp</strong>. Lá você tira todas as suas dúvidas, antes e depois da compra.</p></details>
-        </div>
+    <section class="cat cat--cream" aria-labelledby="cat-gestao">
+      <header class="container cat__head">
+        <h2 id="cat-gestao">IA para gestão</h2>
+        <p>Automação, atendimento, organização e processos do escritório.</p>
+      </header>
+      <div class="marquee" aria-label="IA para gestão: arraste para o lado para ver mais">
+        <ul class="shelf">
+        <li class="soon"><div class="item item--soon"><span class="brand-mark" aria-hidden="true"><svg><use href="#cia-icon"/></svg></span><p>Em breve</p></div></li>
+        <li class="soon"><div class="item item--soon"><span class="brand-mark" aria-hidden="true"><svg><use href="#cia-icon"/></svg></span><p>Em breve</p></div></li>
+        <li class="soon"><div class="item item--soon"><span class="brand-mark" aria-hidden="true"><svg><use href="#cia-icon"/></svg></span><p>Em breve</p></div></li>
+        <li class="soon"><div class="item item--soon"><span class="brand-mark" aria-hidden="true"><svg><use href="#cia-icon"/></svg></span><p>Em breve</p></div></li>
+        <li class="soon"><div class="item item--soon"><span class="brand-mark" aria-hidden="true"><svg><use href="#cia-icon"/></svg></span><p>Em breve</p></div></li>
+        </ul>
       </div>
     </section>
 
-    <!-- ===================== CTA FINAL / COMUNIDADE ===================== -->
-    <section class="section section--dark cta" id="comunidade">
-      <div class="container cta__grid">
-        <div class="reveal">
-          <svg class="cta__icon"><use href="#cia-icon"/></svg>
-          <h2 class="display display--md">Entre para a nossa <em>comunidade no WhatsApp.</em></h2>
-          <p class="lead lead--light">Todas as dúvidas são tiradas lá, e todo o contato com a equipe CIA acontece por lá.</p>
-          <ul class="cta__list">
-            <li>Tire suas dúvidas sobre os agentes</li>
-            <li>Fale direto com a equipe CIA</li>
-            <li>Suporte antes e depois da compra</li>
-          </ul>
-        </div>
-
-        <div class="community reveal">
-          <span class="community__icon"><svg aria-hidden="true"><use href="#wa-icon"/></svg></span>
-          <h3>Comunidade CIA</h3>
-          <p>Grupo oficial no WhatsApp para arquitetos e designers de interiores.</p>
-          <a href="https://chat.whatsapp.com/DmMdWaeo3gD4I7mkdmJ39l" class="btn btn--green btn--block js-community" target="_blank" rel="noopener">Entrar na comunidade</a>
-          <p class="community__buy">Já decidiu? <a href="#preco">Comprar agora</a></p>
-        </div>
+    <section class="cat cat--light" aria-labelledby="cat-templates">
+      <header class="container cat__head">
+        <h2 id="cat-templates">Templates e ferramentas</h2>
+        <p>Notion, gestão de clientes, cronogramas, briefing e acompanhamento de projetos.</p>
+      </header>
+      <div class="marquee" aria-label="Templates e ferramentas: arraste para o lado para ver mais">
+        <ul class="shelf">
+        <li class="soon"><div class="item item--soon"><span class="brand-mark" aria-hidden="true"><svg><use href="#cia-icon"/></svg></span><p>Em breve</p></div></li>
+        <li class="soon"><div class="item item--soon"><span class="brand-mark" aria-hidden="true"><svg><use href="#cia-icon"/></svg></span><p>Em breve</p></div></li>
+        <li class="soon"><div class="item item--soon"><span class="brand-mark" aria-hidden="true"><svg><use href="#cia-icon"/></svg></span><p>Em breve</p></div></li>
+        <li class="soon"><div class="item item--soon"><span class="brand-mark" aria-hidden="true"><svg><use href="#cia-icon"/></svg></span><p>Em breve</p></div></li>
+        <li class="soon"><div class="item item--soon"><span class="brand-mark" aria-hidden="true"><svg><use href="#cia-icon"/></svg></span><p>Em breve</p></div></li>
+        </ul>
       </div>
     </section>
 
-    <!-- ===================== AVISO IMPORTANTE ===================== -->
-    <section class="notice" aria-labelledby="noticeTitle">
-      <div class="container">
-        <div class="notice__box">
-          <p class="notice__title mono" id="noticeTitle"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0zM12 9v4M12 17h.01"/></svg> Aviso importante</p>
-          <p><strong>A IA muda o tempo todo.</strong> A CIA funciona com a inteligência artificial do Google Gemini, uma ferramenta de terceiros integrada ao seu funcionamento. Por isso, os recursos, os limites e a disponibilidade da plataforma <strong>podem sofrer alterações</strong> de acordo com a evolução desses serviços externos ao longo do tempo.</p>
-        </div>
-      </div>
-    </section>
+    <div class="container">
+
+      <ul class="promise">
+        <li><strong>Garantia de 7 dias</strong><span>Em todos os produtos, a partir da compra.</span></li>
+        <li><strong>Aulas e tutoriais</strong><span>Acesso à plataforma com o passo a passo de cada skill.</span></li>
+        <li><strong>Comunidade</strong><span>Dúvidas e contato com a equipe CIA pelo <a href="https://chat.whatsapp.com/DmMdWaeo3gD4I7mkdmJ39l" target="_blank" rel="noopener">WhatsApp</a>.</span></li>
+      </ul>
+    </div>
   </main>
 
   <footer class="footer">
     <div class="container footer__inner">
-      <span class="footer__brand" role="img" aria-label="CIA"><span class="brand-mark"><svg aria-hidden="true"><use href="#cia-icon"/></svg></span></span>
-      <p>CIA · agentes de inteligência artificial para arquitetos e designers de interiores.</p>
-      <nav class="footer__links">
-        <a href="#antes-depois">Resultados</a>
-        <a href="#como-funciona">Como funciona</a>
-        <a href="https://chat.whatsapp.com/DmMdWaeo3gD4I7mkdmJ39l" class="js-community" target="_blank" rel="noopener">Comunidade</a>
-        <a href="#" id="instaLink" target="_blank" rel="noopener" hidden>Instagram</a>
+      <span class="brand-mark" role="img" aria-label="CIA"><svg aria-hidden="true"><use href="#cia-icon"/></svg></span>
+      <p>CIA · skills de inteligência artificial para arquitetos e designers de interiores.</p>
+      <nav class="footer__links" aria-label="Rodapé">
+        <a href="https://chat.whatsapp.com/DmMdWaeo3gD4I7mkdmJ39l" target="_blank" rel="noopener">Comunidade</a>
+        <a href="https://instagram.com/cia.gems" target="_blank" rel="noopener">Instagram</a>
       </nav>
-      <small>© <span id="year"></span> CIA. Google Gemini é marca registrada da Google LLC; a CIA não é afiliada ao Google.</small>
+      <small>© <span id="year">2026</span> CIA. Google Gemini é marca registrada da Google LLC; a CIA não é afiliada ao Google.</small>
       <p class="footer__credit">Desenvolvido por <strong>João Vitor Meirelles</strong></p>
     </div>
   </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-  <a href="#preco" class="sticky-cta">Comprar agora</a>
+    /* Faixas de produtos: ficam paradas; quando não cabem na tela, dá para arrastar para o lado */
+    (function () {
+      document.querySelectorAll(".marquee").forEach(function (box) {
+        var track = box.querySelector(".shelf");
+        var offset = 0, max = 0;
+        var down = false, dragging = false, startX = 0, startY = 0, startOffset = 0, moved = false;
 
-  <script src="js/config.js"></script>
-  <script src="js/main.js" defer></script>
+        function clamp(v) { return Math.max(0, Math.min(max, v)); }
+        function render() { track.style.transform = "translate3d(" + (-offset) + "px,0,0)"; }
+        // No computador a faixa começa com o conjunto centralizado na página: com número ímpar de
+        // cartões o do meio fica no centro; com número par, o vão entre os dois do meio
+        var desktop = window.matchMedia("(min-width: 701px)");
+        function measure(recenter) {
+          max = Math.max(0, track.scrollWidth - box.clientWidth);
+          box.classList.toggle("is-draggable", max > 0);
+          offset = recenter ? (desktop.matches ? max / 2 : 0) : clamp(offset);
+          render();
+        }
+        measure(true);
+        var resizeTimer;
+        window.addEventListener("resize", function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(function () { measure(true); }, 150); });
+
+        // Arrastar com mouse ou dedo; gesto vertical continua rolando a página
+        box.addEventListener("pointerdown", function (e) {
+          if (!max) return;
+          down = true; dragging = false; moved = false;
+          startX = e.clientX; startY = e.clientY; startOffset = offset;
+        });
+        box.addEventListener("pointermove", function (e) {
+          if (!down) return;
+          var dx = e.clientX - startX, dy = e.clientY - startY;
+          if (!dragging) {
+            if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+            if (Math.abs(dy) > Math.abs(dx)) { down = false; return; }
+            dragging = moved = true;
+            box.classList.add("is-dragging");
+            box.setPointerCapture(e.pointerId);
+          }
+          offset = clamp(startOffset - dx);
+          render();
+        });
+        function end() { down = false; dragging = false; box.classList.remove("is-dragging"); }
+        box.addEventListener("pointerup", end);
+        box.addEventListener("pointercancel", end);
+        // Um arraste não vira clique no produto
+        box.addEventListener("click", function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+
+        // Teclado: ao focar um produto, a faixa o traz para a vista
+        box.addEventListener("focusin", function (e) {
+          var li = e.target.closest(".shelf > li");
+          if (li) { offset = clamp(li.offsetLeft - 40); render(); }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
